@@ -6,6 +6,7 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
+// Login
 router.post(
     '/',
     asyncHandler(async (req, res, next) => {
@@ -29,6 +30,7 @@ router.post(
     }),
 );
 
+// Logout
 router.delete(
     '/',
     (_req, res) => {
