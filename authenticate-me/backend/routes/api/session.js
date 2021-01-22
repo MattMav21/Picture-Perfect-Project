@@ -29,14 +29,12 @@ router.post(
     }),
 );
 
-// fetch('/api/session', {
-//     method: 'POST',
-//     headers: {
-//         "Content-Type": "application/json",
-//         "XSRF-TOKEN": `pHTzx3JT-6SaZ4GxHvZFFTpXDkxMT3YBgiu0`
-//     },
-//     body: JSON.stringify({ credential: 'Demo-lition', password: 'password' })
-// }).then(res => res.json()).then(data => console.log(data));
-
+router.delete(
+    '/',
+    (_req, res) => {
+        res.clearCookie('token');
+        return res.json({ message: 'success' });
+    }
+);
 
 module.exports = router;
