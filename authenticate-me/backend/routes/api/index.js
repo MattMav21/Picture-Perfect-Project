@@ -6,6 +6,11 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
+//1
+router.post('/test', function (req, res) {
+    res.json({ requestBody: req.body });
+});
+
 module.exports = router;
 
 //THE BELOW WAS FOR TESTING THE MIDDLEWARE
@@ -15,10 +20,6 @@ module.exports = router;
 // const { restoreUser } = require('../../utils/auth.js'); //3
 // const { requireAuth } = require('../../utils/auth.js'); //4
 
-// //1
-// router.post('/test', function (req, res) {
-//     res.json({ requestBody: req.body });
-// });
 
 // //2 GET /api/set-token-cookie
 // router.get('/set-token-cookie', asyncHandler(async (req, res) => {
