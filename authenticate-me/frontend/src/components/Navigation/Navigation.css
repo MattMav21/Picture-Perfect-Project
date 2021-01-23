@@ -4,7 +4,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: lime;
+    background-color: rgba(30, 30, 32, 1);
+    color: pink;
     position: fixed;
     top: 0;
     left: 0;
@@ -13,12 +14,39 @@
 
 
 .profile-dropdown {
-    background: orange;
-    min-width: 5rem;
-    position: absolute;
+    background-color: rgba(30, 30, 32, .98);
+    position: relative;
+    display: flex;
+    flex-direction: column;
     transition: all 2s ease;
-    margin-top: 1rem;
-    display: block;
-    top: 34px;
-    right: 0;
+    top: 76px;
+    text-align: left;
+    height: 100% auto fit-content;
+    width: 200px;
+    align-items: center;
+    grid-gap: 1rem;
+}
+
+.fa-user-circle {
+    color: hotpink
+}
+
+.logout-button {
+    background-color: rgb(121, 42, 224);
+    position: relative;
+    color: white;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.logout-button:hover {
+    background-color: hotpink;
+    transition: .5s;
+}
+
+.user-button {
+    padding: 5px;
+    position: fixed;
+    right: 10px;
+
 }

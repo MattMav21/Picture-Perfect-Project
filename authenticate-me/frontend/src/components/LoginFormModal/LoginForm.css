@@ -2,7 +2,7 @@ body {
     background-image: url(../../assets/PinkIsPretty.jpg)
 }
 
-.signup-form {
+.login-form {
     width: 40% fit-content;
     display: grid;
     padding: 50px;
@@ -13,19 +13,19 @@ body {
     top: 50px;
     left: 25%;
     background-color: rgba(30, 30, 32, .98);
-    height: 65%;
+    height: 50%;
     justify-content: center;
 }
 
-.signup-button {
+.login-button {
     background-color: rgb(121, 42, 224);
     color: white;
     border-radius: 10px;
-    width: 30%;
+    width: 20%;
     justify-self: center;
 }
 
-.signup-button:hover {
+.login-button:hover {
     background-color: hotpink;
     transition: .5s;
 }
@@ -38,7 +38,16 @@ label {
 }
 
 input {
-    width: 500px;
+    width: 70%;
     height: 30px;
-    text-align: center;
+    align-items: center;
+}
+
+.errors {
+    background-color: blue;
+}
+
+.error-list {
+    color: crimson;
+    background-color: orange;
 }

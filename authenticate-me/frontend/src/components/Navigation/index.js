@@ -23,7 +23,7 @@ function Navigation({ isLoaded }) {
 
     return (
         <nav className="navbar">
-            <NavLink exact to="/" style={{ textDecoration: "none" }}>Home</NavLink>
+            <NavLink exact to="/" style={{ textDecoration: "none", padding: "0 0 0 10px" }}>Home</NavLink>
             {isLoaded && sessionLinks}
         </nav>
     );
