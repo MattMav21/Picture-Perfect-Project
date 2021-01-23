@@ -3,9 +3,9 @@ body {
 }
 
 .login-form {
-    width: 50%;
+    width: 40% fit-content;
     display: grid;
-    padding: 20px;
+    padding: 50px;
     box-shadow: 0px 0px 40px blueviolet;
     border-radius: 4px;
     align-items: center;
