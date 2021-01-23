@@ -1,0 +1,17 @@
+.navbar {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lime;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+
+/* .profile-dropdown {
+    background-color: black;
+} */
