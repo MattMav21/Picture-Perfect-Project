@@ -50,3 +50,9 @@
     right: 10px;
 
 }
+
+.logo {
+    height: 50px;
+    width: 50px;
+    padding: 20px;
+}
