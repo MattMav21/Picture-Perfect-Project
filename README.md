@@ -1,3 +1,3 @@
 # Picture Perfect Database Schema
 
-<img width="851" alt="Screen Shot 2021-01-24 at 8 18 48 AM" src="https://user-images.githubusercontent.com/55333197/105633212-e2142b80-5e1c-11eb-8de4-0e3ab4b319a5.png">
+<img width="934" alt="Screen Shot 2021-01-24 at 8 52 13 AM" src="https://user-images.githubusercontent.com/55333197/105634044-be9faf80-5e21-11eb-9b8b-99ba7204a1eb.png">
