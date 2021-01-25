@@ -1,10 +1,15 @@
 const router = require('express').Router(); //1
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
+const picturesRouter = require('./pictures.js');
+
+//My Routers
 
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
+
+router.use('/pictures', picturesRouter);
 
 //1
 router.post('/test', function (req, res) {
