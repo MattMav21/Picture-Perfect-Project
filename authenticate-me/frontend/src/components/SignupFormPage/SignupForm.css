@@ -42,3 +42,8 @@ input {
     height: 30px;
     text-align: center;
 }
+
+.logo {
+    position: relative;
+    justify-self: center;
+}

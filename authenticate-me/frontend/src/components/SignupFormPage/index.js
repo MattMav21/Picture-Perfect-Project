@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import logo from '../../assets/PicturePerfectLogo.png';
 
 function SignupFormPage() {
     const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function SignupFormPage() {
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
+            <img className="logo" src={logo} alt="logo" />
             <label>
                 Email
                 <br></br>
