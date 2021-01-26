@@ -8,6 +8,7 @@ import Navigation from './components/Navigation';
 import MainPage from './components/MainPage';
 import Picture from './components/Picture';
 import configureStore from './store';
+import PictureUploadForm from './components/PictureUploadForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/pictures" >
+            <PictureUploadForm />
           </Route>
           <Route path="/pictures/:pictureId" >
             <Picture />

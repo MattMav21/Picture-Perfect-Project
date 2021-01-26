@@ -22,7 +22,6 @@ export const uploadPicture = (picture) => async (dispatch) => {
         }),
     });
     dispatch(addAPicture(response.data.picture));
-
 };
 
 // if (response.ok) {
@@ -33,14 +32,7 @@ export const uploadPicture = (picture) => async (dispatch) => {
 
 //------
 
-const intiialState = {
-    picture: null,
-}
-
-// imageLink: '',
-//     title: '',
-//         description: '',
-//             userId: null
+const intiialState = {}
 
 const pictureReducer = (state = intiialState, action) => {
     // console.log(action);
@@ -48,7 +40,8 @@ const pictureReducer = (state = intiialState, action) => {
     switch(action.type) {
         case UPLOAD: {
             newState = Object.assign({}, state);
-            newState.picture = action.payload;
+            debugger
+            newState[action.picture.id] = action.picture
             return newState;
         }
         default:

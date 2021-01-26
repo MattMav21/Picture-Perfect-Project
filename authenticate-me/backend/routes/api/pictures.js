@@ -3,6 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const { Picture } = require('../../db/models');
 const router = express.Router();
+const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 
 // const { addAPicture } = require('../../../frontend/src/store/picture')
 
@@ -11,11 +12,20 @@ const router = express.Router();
 
 router.post(
     '/',
+    // Taking a file uploaded, 
+    // adding it to request as seperate key of file
+    singleMulterUpload("image"),
     asyncHandler(async (req, res) => {
-        const { imageLink, title, description, userId } = req.body;
-        const picture = await Picture.uploadPicture({ imageLink, title, description, userId });
+        const { title, imageLink, description, userId } = req.body;
+        // TODO: upload request.file to aws
+        // const imageLink = await singlePublicFileUpload(req.file);
+        const picture = await Picture.create({ 
+            imageLink,
+            title, 
+            description, 
+            userId 
+        });
 
-        await setTokenCookie(res, picture);
 
         return res.json({
             picture,
