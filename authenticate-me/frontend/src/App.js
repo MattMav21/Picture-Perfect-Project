@@ -7,6 +7,7 @@ import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import MainPage from './components/MainPage';
 import Picture from './components/Picture';
+import configureStore from './store';
 
 function App() {
   const dispatch = useDispatch();
