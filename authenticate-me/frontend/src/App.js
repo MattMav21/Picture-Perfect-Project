@@ -34,7 +34,7 @@ function App() {
           <Route path="/pictures" >
             <PictureUploadForm />
           </Route>
-          <Route path="/pictures/:pictureId" >
+          <Route exact path="/pictures/:pictureId" >
             <Picture />
           </Route>
         </Switch>

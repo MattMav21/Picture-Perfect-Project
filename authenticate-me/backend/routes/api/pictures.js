@@ -16,9 +16,9 @@ router.post(
     // adding it to request as seperate key of file
     singleMulterUpload("image"),
     asyncHandler(async (req, res) => {
-        const { title, imageLink, description, userId } = req.body;
+        const { title, description, userId } = req.body;
         // TODO: upload request.file to aws
-        // const imageLink = await singlePublicFileUpload(req.file);
+        const imageLink = await singlePublicFileUpload(req.file);
         const picture = await Picture.create({ 
             imageLink,
             title, 

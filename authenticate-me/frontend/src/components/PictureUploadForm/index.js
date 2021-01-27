@@ -16,13 +16,16 @@ import { Redirect } from 'react-router-dom';
 const PictureUploadForm = () => {
     const sessionUser = useSelector((state) => state.session.user);
 
-    const [imageLink, setImageLink] = useState('');
+    const [image, setImage] = useState(null);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [tags, setTags] = useState([]);
+    // const [tags, setTags] = useState([]);
 
     const dispatch = useDispatch();
-    const picture = useSelector((state) => state.picture);
+
+    // const picture = useSelector((state) => state.picture);
+
+
 
     if (!sessionUser) return <Redirect to="/login" />;
 
@@ -30,26 +33,32 @@ const PictureUploadForm = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        return dispatch(pictureActions.uploadPicture({imageLink, title, description, tags, userId}))
+        return dispatch(pictureActions.uploadPicture({ image, title, description, userId })).then(<Redirect to="/" />)
     }
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setImage(file);
+    };
 
     return (
         <>
             <h1>Picture Upload!!!</h1>
-            <form onSubmit={handleSubmit} action="/" method="POST">
+            <form onSubmit={handleSubmit} className="picture-upload-form" action="/" method="POST">
                 <label>
                     Upload an image!
                     <br></br>
                     <input 
                         type="file" 
-                        id="avatar"
-                        name="avatar"
                         accept="image/png, image/jpeg"
-                        onChange={(e) => setImageLink(e.target.value)} 
-                        value={imageLink} 
+                        // onChange={(e) => setImage(e.target.value)} 
+                        // onChange={(e) => setImage(`http://${e.target.files.name}`)} 
+                        onChange={updateFile} 
                     />
-                    <img src={imageLink} alt="preview"/>
+                    
+                    
                 </label>
+                <br></br>
                 <br></br>
                 <label>
                     Title:
@@ -60,10 +69,12 @@ const PictureUploadForm = () => {
                         value={title} 
                     />
                     <br></br>
+                    <br></br>
                     <label>
                     Description:
                     <br></br>
                     <textarea 
+                        className="description"
                         type="text"
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
@@ -71,7 +82,8 @@ const PictureUploadForm = () => {
                     </label>
                 </label>
                 <br></br>
-                <button type="submit">Add your picture!</button>
+                <br></br>
+                <button disabled={!image ? true : false} type="submit">Add your picture!</button>
             </form>
         </>
     )
