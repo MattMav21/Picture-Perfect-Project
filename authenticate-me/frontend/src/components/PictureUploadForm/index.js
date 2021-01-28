@@ -3,7 +3,7 @@ import * as sessionActions from '../../store/session';
 import * as pictureActions from '../../store/picture';
 import { useDispatch, useSelector } from 'react-redux';
 import './PictureUploadForm.css';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 // Form needs to contain input for
     //the image source
@@ -23,6 +23,8 @@ const PictureUploadForm = () => {
 
     const dispatch = useDispatch();
 
+    const history = useHistory();
+
     // const picture = useSelector((state) => state.picture);
 
 
@@ -33,7 +35,7 @@ const PictureUploadForm = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        return dispatch(pictureActions.uploadPicture({ image, title, description, userId })).then(<Redirect to="/" />)
+        return dispatch(pictureActions.uploadPicture({ image, title, description, userId }));
     }
 
     const updateFile = (e) => {

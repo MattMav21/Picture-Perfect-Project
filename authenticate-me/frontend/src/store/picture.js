@@ -1,6 +1,12 @@
 import { fetch } from './csrf';
 
+const LOAD = 'picture/LOAD';
 const UPLOAD = 'picture/UPLOAD';
+
+const load = pictures => ({
+    type: LOAD,
+    pictures,
+});
 
 export const addAPicture = (picture) => {
     return {
@@ -8,6 +14,12 @@ export const addAPicture = (picture) => {
         picture,
     }
 }
+
+export const getPictures = () => async dispatch => {
+    const response = await fetch(`/api/`)
+    const responseData = response.data.pictures;
+    dispatch(load(responseData));
+};
 
 
 //change code
@@ -45,7 +57,6 @@ export const uploadPicture = (picture) => async (dispatch) => {
         },
         body: formData,
     });
-    debugger;
     dispatch(addAPicture(response.data.picture));
 };
 
@@ -62,9 +73,15 @@ const intiialState = {}
 const pictureReducer = (state = intiialState, action) => {
     let newState;
     switch(action.type) {
+        case LOAD: {
+            newState = [];
+            action.pictures.forEach(pic => {
+                newState[pic.id] = pic
+            })
+            return newState;
+        }
         case UPLOAD: {
             newState = Object.assign({}, state);
-            debugger
             newState[action.picture.id] = action.picture
             return newState;
         }

@@ -2,8 +2,20 @@ const router = require('express').Router(); //1
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const picturesRouter = require('./pictures.js');
+const asyncHandler = require('express-async-handler');
+const { Picture } = require('../../db/models');
+
 
 //My Routers
+
+router.get('/', asyncHandler(async (req, res) => {
+    const pictures = await Picture.findAll();
+    console.log(pictures);
+    
+    return res.json({
+        pictures,
+    });
+}))
 
 router.use('/session', sessionRouter);
 
