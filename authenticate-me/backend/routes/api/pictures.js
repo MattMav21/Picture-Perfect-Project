@@ -1,5 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const { Op } = require('sequelize');
 
 const { Picture } = require('../../db/models');
 const router = express.Router();
@@ -9,6 +10,18 @@ const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 
 
 // CREATE ROUTES for /pictures
+router.get(`/:pictureId`, asyncHandler(async (req, res) => {
+    const singlePicId = req.params.pictureId;
+
+    const picture = await Picture.findOne({ where: {
+        id: singlePicId
+    }});
+
+    return res.json({
+        picture,
+    });
+
+}));
 
 router.post(
     '/',
@@ -32,5 +45,6 @@ router.post(
         });
     }),
 );
+
 
 module.exports = router;

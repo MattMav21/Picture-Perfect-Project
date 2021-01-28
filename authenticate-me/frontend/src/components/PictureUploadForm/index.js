@@ -35,7 +35,7 @@ const PictureUploadForm = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        return dispatch(pictureActions.uploadPicture({ image, title, description, userId }));
+        return dispatch(pictureActions.uploadPicture({ image, title, description, userId })).then(() => history.push('/'))
     }
 
     const updateFile = (e) => {

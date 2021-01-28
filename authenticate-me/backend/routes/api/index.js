@@ -10,8 +10,7 @@ const { Picture } = require('../../db/models');
 
 router.get('/', asyncHandler(async (req, res) => {
     const pictures = await Picture.findAll();
-    console.log(pictures);
-    
+        
     return res.json({
         pictures,
     });

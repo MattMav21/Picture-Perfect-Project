@@ -31,7 +31,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/pictures" >
+          <Route exact path="/pictures" >
             <PictureUploadForm />
           </Route>
           <Route exact path="/pictures/:pictureId" >

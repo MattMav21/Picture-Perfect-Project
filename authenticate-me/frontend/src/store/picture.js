@@ -2,6 +2,7 @@ import { fetch } from './csrf';
 
 const LOAD = 'picture/LOAD';
 const UPLOAD = 'picture/UPLOAD';
+const PICTURE_LOAD = 'picture/PICTURE_UPLOAD';
 
 const load = pictures => ({
     type: LOAD,
@@ -15,14 +16,37 @@ export const addAPicture = (picture) => {
     }
 }
 
+export const loadOnePicture = (picture) => {
+    return {
+        type: PICTURE_LOAD,
+        picture,
+    }
+}
+
 export const getPictures = () => async dispatch => {
     const response = await fetch(`/api/`)
     const responseData = response.data.pictures;
     dispatch(load(responseData));
 };
 
+export const getOnePicture = (pictureId) => async dispatch => {
+    const response = await fetch(`/api/pictures/${pictureId}`);
+    const picture = await response.data.picture;
+    dispatch(loadOnePicture(picture))
+}
 
-//change code
+
+// Code that can be used for something else
+// const response = await fetch(`/api/pictures`, {
+//     method: 'POST',
+//     body: JSON.stringify({
+//         image,
+//         title,
+//         description,
+//         userId,
+//     }),
+// });
+
 export const uploadPicture = (picture) => async (dispatch) => {
     const  { image, title, description, userId } = picture;
     const formData = new FormData();
@@ -39,15 +63,6 @@ export const uploadPicture = (picture) => async (dispatch) => {
     }
 
 
-    // const response = await fetch(`/api/pictures`, {
-    //     method: 'POST',
-    //     body: JSON.stringify({
-    //         image,
-    //         title,
-    //         description,
-    //         userId,
-    //     }),
-    // });
 
 
     const response = await fetch(`/api/pictures/`, {
@@ -83,6 +98,10 @@ const pictureReducer = (state = intiialState, action) => {
         case UPLOAD: {
             newState = Object.assign({}, state);
             newState[action.picture.id] = action.picture
+            return newState;
+        }
+        case PICTURE_LOAD: {
+            newState = action.picture;
             return newState;
         }
         default:

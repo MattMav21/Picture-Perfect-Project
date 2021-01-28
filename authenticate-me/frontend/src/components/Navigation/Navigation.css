@@ -2,7 +2,7 @@
     height: 50px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: rgba(30, 30, 32, 1);
     color: pink;
@@ -15,16 +15,17 @@
 
 .profile-dropdown {
     background-color: rgba(30, 30, 32, .98);
-    position: relative;
+    position: fixed;
     display: flex;
     flex-direction: column;
     transition: all 2s ease;
-    top: 76px;
+    top: 50px;
     text-align: left;
     height: 100% auto fit-content;
     width: 200px;
     align-items: center;
     grid-gap: 1rem;
+    right: 0;
 }
 
 .fa-user-circle {
@@ -48,11 +49,27 @@
     padding: 5px;
     position: fixed;
     right: 10px;
-
 }
 
 .logo {
     height: 50px;
     width: 50px;
     padding: 20px;
+    right: 52px;
+}
+
+.navbar-link {
+    height: 20px;
+    width: 200px;
+    display: flex;
+    background-color: lime;
+    margin: 10px;
+    text-align: center;
+    justify-content: center;
+    justify-self: left;
+    color:rgb(121, 42, 224)
+}
+
+.navbar-link:hover {
+    background-color: skyblue;
 }

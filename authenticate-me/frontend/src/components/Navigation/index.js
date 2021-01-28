@@ -25,7 +25,8 @@ function Navigation({ isLoaded }) {
     return (
         <nav className="navbar">
             <img className="logo" src={logo} alt="logo"/>
-            <NavLink exact to="/" style={{ textDecoration: "none", padding: "0 0 0 10px" }}>Home</NavLink>
+            <NavLink className="navbar-link" exact to="/" style={{ textDecoration: "none", padding: "0 0 0 10px" }}>Home</NavLink>
+            <NavLink className="navbar-link" exact to="/pictures" style={{ textDecoration: "none", padding: "0 0 0 10px" }}>Upload a picture!</NavLink>
             {isLoaded && sessionLinks}
         </nav>
     );
