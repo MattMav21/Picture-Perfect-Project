@@ -2,7 +2,7 @@
     height: 50px;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: rgba(30, 30, 32, 1);
     color: pink;
@@ -54,20 +54,18 @@
 .logo {
     height: 50px;
     width: 50px;
-    padding: 20px;
-    right: 52px;
 }
 
 .navbar-link {
     height: 20px;
     width: 200px;
     display: flex;
+    position: relative;
     background-color: lime;
-    margin: 10px;
-    text-align: center;
+    margin: 0 0 0 30px;
     justify-content: center;
-    justify-self: left;
-    color:rgb(121, 42, 224)
+    color:rgb(121, 42, 224);
+    right: 200px;
 }
 
 .navbar-link:hover {
