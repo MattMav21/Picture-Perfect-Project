@@ -14,7 +14,7 @@ module.exports = {
     */
    return queryInterface.bulkInsert('Pictures', [
     {
-       imageLink: 'merlin_179583855_1ecb4f17-5736-4c26-98e0-af8db8e664b4-superJumbo.jpg',
+       imageLink: 'https://pictureperfectbucket.s3.amazonaws.com/1611873290864.jpg',
        title: 'Anamaniacs',
        description: 'My favorite show growing up! :-)',
        userId: 1,
