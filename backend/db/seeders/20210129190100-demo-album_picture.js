@@ -12,11 +12,10 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Albums', [
+    return queryInterface.bulkInsert('Album_Pictures', [
       {
-        title: 'Demo Album',
-        description: 'This is a Demo Album To Help You Get Started',
-        userId: 1,
+        albumId: 2,
+        pictureId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       }
@@ -31,6 +30,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete('Albums', null, {})
+    return queryInterface.bulkDelete('Album_Pictures', null, {})
   }
 };
