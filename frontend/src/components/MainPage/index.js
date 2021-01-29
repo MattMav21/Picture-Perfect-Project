@@ -23,7 +23,7 @@ const MainPage = () => {
 
     return (
     <>
-        <h1>Welcome to hell!</h1>
+        <h1>Main page!</h1>
             { pictures !== undefined && pictures.length > 1 && pictures.map((pics) => <a href={`/pictures/${pics.id}`}><img className="uploaded-picture" src={pics.imageLink} alt="uploaded" /></a>)}
     </>)
 }
