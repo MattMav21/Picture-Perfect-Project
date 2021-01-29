@@ -9,6 +9,7 @@ import MainPage from './components/MainPage';
 import Picture from './components/Picture';
 import configureStore from './store';
 import PictureUploadForm from './components/PictureUploadForm';
+import UserPage from './components/UserPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/users/:userId">
+            <UserPage />
           </Route>
           <Route exact path="/pictures" >
             <PictureUploadForm />
