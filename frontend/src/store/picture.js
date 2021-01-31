@@ -3,6 +3,7 @@ import { fetch } from './csrf';
 const LOAD = 'picture/LOAD';
 const UPLOAD = 'picture/UPLOAD';
 const PICTURE_LOAD = 'picture/PICTURE_UPLOAD';
+const GET_USER_INFO = 'session/GET_USER_INFO';
 
 const load = pictures => ({
     type: LOAD,
@@ -20,6 +21,13 @@ export const loadOnePicture = (picture) => {
     return {
         type: PICTURE_LOAD,
         picture,
+    }
+}
+
+const getInfo = (info) => {
+    return {
+        type: GET_USER_INFO,
+        info,
     }
 }
 
@@ -75,6 +83,17 @@ export const uploadPicture = (picture) => async (dispatch) => {
     dispatch(addAPicture(response.data.picture));
 };
 
+
+export const getUserInfo = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/users/${userId}`, {
+        method: 'GET',
+    });
+    const responseData = response.data;
+
+    dispatch(getInfo(responseData))
+    return responseData;
+}
+
 // if (response.ok) {
 //     const picture = await response.json();
 //     dispatch(addAPicture(picture));
@@ -104,6 +123,11 @@ const pictureReducer = (state = intiialState, action) => {
             newState = action.picture;
             return newState;
         }
+        case GET_USER_INFO:
+            newState = [];
+            const userPics = action.info.pictures;
+            newState = userPics;
+            return newState;
         default:
             return state;
     }

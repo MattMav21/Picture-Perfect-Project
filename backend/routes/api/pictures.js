@@ -17,8 +17,13 @@ router.get(`/:pictureId`, asyncHandler(async (req, res) => {
         id: singlePicId
     }});
 
+    const user = await User.findOne({ where: {
+        id: picture.userId
+    }})
+
     return res.json({
         picture,
+        user,
     });
 
 }));

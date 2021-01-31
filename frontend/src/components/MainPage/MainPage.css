@@ -4,7 +4,14 @@ body {
 
 .uploaded-picture {
   border: 2px solid red;
+  padding: 20px;
   background-color: rgb(33, 33, 33);
   border-radius: 8px;
   width: 200px;
+}
+
+.picture-cluster {
+  display: inline-block;
+  width: fit-content(auto);
+  height: fit-content(auto);
 }

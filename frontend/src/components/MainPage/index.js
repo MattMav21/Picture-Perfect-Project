@@ -23,8 +23,17 @@ const MainPage = () => {
 
     return (
     <>
-        <h1>Welcome to hell!</h1>
-            { pictures !== undefined && pictures.length > 1 && pictures.map((pics) => <a href={`/pictures/${pics.id}`}><img className="uploaded-picture" src={pics.imageLink} alt="uploaded" /></a>)}
+        <h1>Main Page!</h1>
+            <div className="picture-cluster">
+            { pictures !== undefined && pictures.length > 1 && pictures.map((pics) => 
+                <a href={`/pictures/${pics.id}`}>
+                    <label>Uploaded by {pics.userId}</label>
+                    <br></br>
+                    <img className="uploaded-picture" src={pics.imageLink} alt="uploaded" />
+                    <br></br>
+                </a>
+            )}
+            </div>
     </>)
 }
 
