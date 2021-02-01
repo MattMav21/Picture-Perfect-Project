@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -6,6 +6,8 @@ import './Navigation.css';
 import logo from '../../assets/PicturePerfectLogo.png';
 
 function Navigation({ isLoaded }) {
+    const [myPage, setMyPage] = useState(0);
+
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
@@ -22,11 +24,17 @@ function Navigation({ isLoaded }) {
         );
     }
 
+    useEffect(() => {
+        if (sessionUser) {
+            setMyPage(sessionUser.id || 0)
+        }
+    })
+
     return (
         <nav className="navbar">
-            <img className="logo" src={logo} alt="logo"/>
+            <a href="/"><img className="logo" src={logo} alt="logo" /></a>
             <br></br>
-            <NavLink className="navbar-link" exact to="/" style={{ textDecoration: "none", padding: "0 0 0 10px" }}>Home</NavLink>
+            <NavLink className="navbar-link" exact to={`/users/${myPage}`} style={{ textDecoration: "none", padding: "0 0 0 10px" }}>My Page</NavLink>
             <NavLink className="navbar-link" exact to="/pictures" style={{ textDecoration: "none", padding: "0 0 0 10px" }}>Upload a picture!</NavLink>
             {isLoaded && sessionLinks}
         </nav>

@@ -25,7 +25,6 @@ import * as pictureActions from '../../store/picture';
 const UserPage = () => {
     const { userId } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
-    const sessionUserId = sessionUser.id;
 
     const dispatch = useDispatch();
     const pictureArray = useSelector((state) => state.picture.pictures);
@@ -72,7 +71,7 @@ const UserPage = () => {
             {/* { picture !== undefined && <img className="uploaded-picture" src={picture.imageLink} alt="uploaded" />} */}
             { pictures !== undefined && pictures.length > 0 && pictures.map((pics) => <a href={`/pictures/${pics.id}`} className="user-pics"><img className="uploaded-picture" src={pics.imageLink} alt="uploaded" /></a>)}
             <br></br>
-            {Number(userId) === Number(sessionUserId) && <button>MY PAGE</button>}
+            {sessionUser && Number(userId) === Number(sessionUser.id) && <button>MY PAGE</button>}
             {/* { pictures !== undefined && pictures.length > 1 && <img className="uploaded-picture" src={correctPicture.imageLink} alt="uploaded" /> } */}
         </>
     )
