@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { Op } = require('sequelize');
 
-const { Picture } = require('../../db/models');
+const { Picture, User } = require('../../db/models');
 const router = express.Router();
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 

@@ -1,0 +1,4 @@
+.user-pics {
+    display: flex;
+    flex-direction: row;
+}

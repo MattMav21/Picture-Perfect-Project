@@ -15,18 +15,26 @@ import * as pictureActions from '../../store/picture';
 const Picture = () => {
     const { pictureId } = useParams();
     const dispatch = useDispatch();
-    const picture = useSelector((state) => state.picture);
+    const picture = useSelector((state) => state.picture.picture);
+    const thisUser = useSelector((state) => state.picture.user);
+    const [username, setUsername] = useState('')
+    const [userId, setUserId] = useState(0);
 
-    const { getPictures, getOnePicture } = pictureActions;
+    const { getOnePicture } = pictureActions;
 
     useEffect(() => {
         dispatch(getOnePicture(pictureId))
     }, [dispatch, getOnePicture, pictureId])
 
+    useEffect(() => {
+        if (thisUser) {
+            setUsername(thisUser.username || '');
+            setUserId(thisUser.id || 0);
+        }
+    })
 
+    console.log(username);
     // const correctPicture = pictures.find((pic) => pic.id === pictureId)
-
-    console.log(picture)
 
     // const loadedPictures = pictures.length > 0 ? pictures : null;
 
@@ -41,6 +49,7 @@ const Picture = () => {
     return (
         <>
             {/* <h1>Pictures!!!</h1> */}
+            <h1>Uploaded by <a href={`/users/${userId}`}>{username}</a></h1>
             { picture !== undefined && <img className="uploaded-picture" src={picture.imageLink} alt="uploaded" /> }
             {/* { pictures !== undefined && pictures.length > 1 && pictures.map((pics) => <a href={`/pictures/${pics.id}`}><img className="uploaded-picture" src={pics.imageLink} alt="uploaded" /></a>)} */}
             {/* { pictures !== undefined && pictures.length > 1 && <img className="uploaded-picture" src={correctPicture.imageLink} alt="uploaded" /> } */}

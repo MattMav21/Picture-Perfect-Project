@@ -27,7 +27,7 @@ const MainPage = () => {
             <div className="picture-cluster">
             { pictures !== undefined && pictures.length > 1 && pictures.map((pics) => 
                 <a href={`/pictures/${pics.id}`}>
-                    <label>Uploaded by {pics.userId}</label>
+                    {/* <label>Uploaded by {pics.userId}</label> */}
                     <br></br>
                     <img className="uploaded-picture" src={pics.imageLink} alt="uploaded" />
                     <br></br>

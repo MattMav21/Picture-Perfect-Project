@@ -25,19 +25,35 @@ import * as pictureActions from '../../store/picture';
 const UserPage = () => {
     const { userId } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
-    // const sessionUserId = sessionUser.id;
+    const sessionUserId = sessionUser.id;
 
     const dispatch = useDispatch();
-    const pictures = useSelector((state) => state.picture);
+    const pictureArray = useSelector((state) => state.picture.pictures);
+    const thisUser = useSelector((state) => state.picture.user);
+    const [username, setUsername] = useState('')
+    const [pictures, setPictures] = useState([]);
     const { getUserInfo } = pictureActions;
+
+
     // const { getPictures, getOnePicture } = pictureActions;
     useEffect(() => {
         dispatch(getUserInfo(userId))
     }, [dispatch, getUserInfo, userId])
 
 
+    useEffect(() => {
+        if (thisUser) {
+            setUsername(thisUser.username || '');
+        }
+        if (pictureArray) {
+            setPictures(pictureArray || [])
+        }
+    }, [thisUser, pictureArray])
+
+    console.log(username, pictures)
+
+
     // const correctPicture = pictures.find((pic) => pic.id === pictureId)
-    console.log(pictures)
 
     // const loadedPictures = pictures.length > 0 ? pictures : null;
 
@@ -51,11 +67,12 @@ const UserPage = () => {
 
     return (
         <>
-            <h1>User Page for {userId}</h1>
+            {username ? <h1>User Page for {username}</h1> : <h1>User not found!</h1>}
             {/* <h1>Pictures!!!</h1> */}
-            {/* {Number(userId) === Number(sessionUserId) && <h1>MY PAGE</h1>} */}
             {/* { picture !== undefined && <img className="uploaded-picture" src={picture.imageLink} alt="uploaded" />} */}
-            { pictures !== undefined && pictures.length > 1 && pictures.map((pics) => <a href={`/pictures/${pics.id}`}><img className="uploaded-picture" src={pics.imageLink} alt="uploaded" /></a>)}
+            { pictures !== undefined && pictures.length > 0 && pictures.map((pics) => <a href={`/pictures/${pics.id}`} className="user-pics"><img className="uploaded-picture" src={pics.imageLink} alt="uploaded" /></a>)}
+            <br></br>
+            {Number(userId) === Number(sessionUserId) && <button>MY PAGE</button>}
             {/* { pictures !== undefined && pictures.length > 1 && <img className="uploaded-picture" src={correctPicture.imageLink} alt="uploaded" /> } */}
         </>
     )

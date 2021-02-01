@@ -39,8 +39,8 @@ export const getPictures = () => async dispatch => {
 
 export const getOnePicture = (pictureId) => async dispatch => {
     const response = await fetch(`/api/pictures/${pictureId}`);
-    const picture = await response.data.picture;
-    dispatch(loadOnePicture(picture))
+    const responseData = await response.data;
+    dispatch(loadOnePicture(responseData))
 }
 
 
@@ -124,9 +124,7 @@ const pictureReducer = (state = intiialState, action) => {
             return newState;
         }
         case GET_USER_INFO:
-            newState = [];
-            const userPics = action.info.pictures;
-            newState = userPics;
+            newState = action.info;
             return newState;
         default:
             return state;
