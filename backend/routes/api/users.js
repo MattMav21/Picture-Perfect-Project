@@ -48,17 +48,7 @@ router.post(
 );
 
 router.get(`/:userId`, asyncHandler(async (req, res) => {
-    console.log("REQUEST PARAMETERS", req.params)
-    const singleUserId = Number(req.params.userId);
-    console.log("USER PAGE ROUTE HAS BEEN HIT!!!!")
-    console.log("USER PAGE ROUTE HAS BEEN HIT!!!!")
-    console.log("USER PAGE ROUTE HAS BEEN HIT!!!!")
-    console.log(singleUserId)
-    console.log(typeof singleUserId)
-    console.log("USER PAGE ROUTE HAS BEEN HIT!!!!")
-    console.log("USER PAGE ROUTE HAS BEEN HIT!!!!")
-    console.log("USER PAGE ROUTE HAS BEEN HIT!!!!")
-
+    const singleUserId = req.params.userId;
 
     const user = await User.findOne({where: {id: Number(singleUserId)}});
     const pictures = await Picture.findAll({where: {userId: Number(singleUserId)}});

@@ -49,20 +49,16 @@ const UserPage = () => {
         }
     }, [thisUser, pictureArray])
 
-    console.log(username, pictures)
-
 
     // const correctPicture = pictures.find((pic) => pic.id === pictureId)
 
     // const loadedPictures = pictures.length > 0 ? pictures : null;
 
-    // console.log(loadedPictures)
-
     // if (loadedPictures > 0) {
     //     const correctPicture = loadedPictures.find((pic) => pic.id === pictureId)
-    //     console.log(correctPicture)
     // }
 
+    console.log(username)
 
     return (
         <>

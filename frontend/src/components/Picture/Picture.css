@@ -1,3 +1,29 @@
 body {
     padding: 50px;
 }
+
+.picture-div {
+    background-color: rgb(33, 33, 33);
+    display: block;
+    text-align: center;
+    width: 50%;
+    border-radius: 7px;
+    padding: 15px 0 30px 0;
+}
+
+.title {
+    color: white;
+    font-weight: 600;
+    line-height: 18px;
+    margin-bottom: 10px;
+    min-height: 18px;
+    display: inline-block;
+    width: 404px;
+}
+
+.description-area {
+    color: white;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+}
