@@ -58,7 +58,7 @@ const UserPage = () => {
     // }
 
     console.log(username)
-    
+
 
     return (
         <>
@@ -69,7 +69,7 @@ const UserPage = () => {
                 pictures.map((pics) => {
                     return (
                         <>
-                            <DeletePictureButton picId={pics.id} />
+                            {sessionUser && Number(userId) === Number(sessionUser.id) && <DeletePictureButton picId={pics.id} />}
                             <a href={`/pictures/${pics.id}`} className="user-pics">
                                 <img className="uploaded-picture" src={pics.imageLink} alt="uploaded" />
                             </a>
