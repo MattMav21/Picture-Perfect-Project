@@ -4,6 +4,7 @@ const LOAD = 'picture/LOAD';
 const UPLOAD = 'picture/UPLOAD';
 const PICTURE_LOAD = 'picture/PICTURE_UPLOAD';
 const GET_USER_INFO = 'session/GET_USER_INFO';
+const DELETE_PICTURE = 'picture/DELETE_PICTURE';
 
 const load = pictures => ({
     type: LOAD,
@@ -31,6 +32,13 @@ const getInfo = (info) => {
     }
 }
 
+const deletePicture = (picture) => {
+    return {
+        type: DELETE_PICTURE,
+        picture
+    }
+}
+
 export const getPictures = () => async dispatch => {
     const response = await fetch(`/api/`)
     const responseData = response.data.pictures;
@@ -40,6 +48,7 @@ export const getPictures = () => async dispatch => {
 export const getOnePicture = (pictureId) => async dispatch => {
     const response = await fetch(`/api/pictures/${pictureId}`);
     const responseData = await response.data;
+    debugger
     dispatch(loadOnePicture(responseData))
 }
 
@@ -100,6 +109,20 @@ export const getUserInfo = (userId) => async (dispatch) => {
 //     return picture;
 // }
 
+export const destroyPicture = (id) => async (dispatch) => {
+    const response = await fetch(`/api/pictures/${id}/delete`, {
+        method: 'DELETE',
+    });
+    debugger
+
+    if (response.ok) {
+        debugger
+        const deletedPicture = await response.data.picture;
+        debugger
+        dispatch(deletePicture(deletedPicture));
+    }
+}
+
 //------
 
 const intiialState = {}
@@ -125,6 +148,10 @@ const pictureReducer = (state = intiialState, action) => {
         }
         case GET_USER_INFO:
             newState = action.info;
+            return newState;
+        case DELETE_PICTURE:
+            newState = action.picture;
+            debugger
             return newState;
         default:
             return state;

@@ -17,9 +17,7 @@ router.get('/', asyncHandler(async (req, res) => {
 }))
 
 router.use('/session', sessionRouter);
-
 router.use('/users', usersRouter);
-
 router.use('/pictures', picturesRouter);
 
 //1

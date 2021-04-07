@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './UserPage.css';
 import { useParams } from 'react-router-dom';
 import * as pictureActions from '../../store/picture';
+import DeletePictureButton from '../_buttons/DeletePictureButton';
 
 //Will use useParams to get the pictureId.
 //Needs to display
@@ -19,8 +20,6 @@ import * as pictureActions from '../../store/picture';
         //their albums
             //If they are the logged in user:
                 //a create an album button.
-
-//THIS IS NOT THE CORRECT CODE
 
 const UserPage = () => {
     const { userId } = useParams();
@@ -59,13 +58,25 @@ const UserPage = () => {
     // }
 
     console.log(username)
+    
 
     return (
         <>
             {username ? <h1>User Page for {username}</h1> : <h1>User not found!</h1>}
             {/* <h1>Pictures!!!</h1> */}
             {/* { picture !== undefined && <img className="uploaded-picture" src={picture.imageLink} alt="uploaded" />} */}
-            { pictures !== undefined && pictures.length > 0 && pictures.map((pics) => <a href={`/pictures/${pics.id}`} className="user-pics"><img className="uploaded-picture" src={pics.imageLink} alt="uploaded" /></a>)}
+            { pictures !== undefined && pictures.length > 0 && 
+                pictures.map((pics) => {
+                    return (
+                        <>
+                            <DeletePictureButton picId={pics.id} />
+                            <a href={`/pictures/${pics.id}`} className="user-pics">
+                                <img className="uploaded-picture" src={pics.imageLink} alt="uploaded" />
+                            </a>
+                        </>
+                    )
+                })
+            }
             <br></br>
             {sessionUser && Number(userId) === Number(sessionUser.id) && <button>MY PAGE</button>}
             {/* { pictures !== undefined && pictures.length > 1 && <img className="uploaded-picture" src={correctPicture.imageLink} alt="uploaded" /> } */}

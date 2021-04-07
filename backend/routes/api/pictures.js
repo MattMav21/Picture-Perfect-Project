@@ -52,4 +52,18 @@ router.post(
 );
 
 
+router.delete(`/:pictureId/delete`, asyncHandler(async (req, res) => {
+        const singlePicId = req.params.pictureId;
+
+        const picture = await Picture.findOne({
+            where: {
+                id: singlePicId
+            }
+        });
+
+        await picture.destroy();
+    })
+);
+
+
 module.exports = router;
